@@ -1,5 +1,5 @@
 def main():
-    print('Hi from action_sequencer.')
+    print('Hi from big_brother.')
 
 
 if __name__ == '__main__':

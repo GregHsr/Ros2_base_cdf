@@ -1,23 +1,21 @@
+from setuptools import find_packages, setup, SetuptoolsDeprecationWarning
+import warnings
 import os
 from glob import glob
-
-from setuptools import setup, SetuptoolsDeprecationWarning, find_packages
-import warnings
-
 warnings.filterwarnings("ignore", category=SetuptoolsDeprecationWarning)
 
-package_name = 'action_sequencer'
+package_name = 'big_brother'
 
 setup(
     name=package_name,
     version='0.0.0',
-    packages=find_packages(),
+    packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name, 'config'),
-            glob('action_sequencer/config/*.*')
+        (os.path.join('share', package_name, 'scripts'),
+            glob('big_brother/scripts/*.*')
          ),
     ],
     install_requires=['setuptools'],
@@ -29,7 +27,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'action_sequencer_node = action_sequencer.action_sequencer_node:main'
+            'big_brother_node = big_brother.big_brother_seq:main'
         ],
     },
 )
